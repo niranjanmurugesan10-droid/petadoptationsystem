@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function AddPet() {
   const [formData, setFormData] = useState({
     name: "",
@@ -90,7 +92,7 @@ function AddPet() {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/pets",
+        `${API_URL}/api/pets`,
         {
           method: "POST",
 

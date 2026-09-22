@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+if (!API_URL) {
+  console.error("VITE_API_URL is not configured");
+}
+
 function Register() {
   const navigate = useNavigate();
 
@@ -28,6 +34,13 @@ function Register() {
     event.preventDefault();
 
     setMessage("");
+
+    if (!API_URL) {
+      setMessage(
+        "VITE_API_URL is not configured. Please restart the frontend dev server."
+      );
+      return;
+    }
 
     if (
       !formData.name ||
@@ -59,7 +72,7 @@ function Register() {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/auth/register",
+        `${API_URL}/api/auth/register`,
         {
           method: "POST",
 

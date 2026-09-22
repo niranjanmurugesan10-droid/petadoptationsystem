@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function MyRequests() {
 
   const [requests, setRequests] =
@@ -23,7 +25,7 @@ function MyRequests() {
 
         const response =
           await fetch(
-            "http://localhost:5000/api/adoptions/my-requests",
+            `${API_URL}/api/adoptions/my-requests`,
             {
               headers: {
                 Authorization:

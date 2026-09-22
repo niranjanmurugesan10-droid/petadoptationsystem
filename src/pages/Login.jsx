@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+if (!API_URL) {
+  console.error("VITE_API_URL is not configured");
+}
+
 function Login() {
   const navigate = useNavigate();
 
@@ -25,6 +31,13 @@ function Login() {
     event.preventDefault();
 
     setMessage("");
+
+    if (!API_URL) {
+      setMessage(
+        "VITE_API_URL is not configured. Please restart the frontend dev server."
+      );
+      return;
+    }
 
     if (!formData.email || !formData.password) {
       setMessage("Please fill all fields");

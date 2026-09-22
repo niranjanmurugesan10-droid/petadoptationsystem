@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function ReceivedRequests() {
 
   const [requests, setRequests] =
@@ -21,7 +23,7 @@ function ReceivedRequests() {
 
       const response =
         await fetch(
-          "http://localhost:5000/api/adoptions/received",
+          `${API_URL}/api/adoptions/received`,
           {
             headers: {
               Authorization:
@@ -75,7 +77,7 @@ function ReceivedRequests() {
 
       const response =
         await fetch(
-          `http://localhost:5000/api/adoptions/${id}/status`,
+          `${API_URL}/api/adoptions/${id}/status`,
           {
             method: "PUT",
 

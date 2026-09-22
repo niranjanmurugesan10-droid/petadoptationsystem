@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import PetCard from "../components/PetCard";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Pets() {
   const [pets, setPets] = useState([]);
   const [search, setSearch] = useState("");
@@ -14,7 +16,7 @@ function Pets() {
       setError("");
 
       const response = await fetch(
-        "http://localhost:5000/api/pets"
+        `${API_URL}/api/pets`
       );
 
       const data = await response.json();

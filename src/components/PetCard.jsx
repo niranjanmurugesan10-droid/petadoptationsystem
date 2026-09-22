@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function PetCard({ pet }) {
   const [showForm, setShowForm] =
     useState(false);
@@ -94,7 +96,7 @@ function PetCard({ pet }) {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/adoptions",
+        `${API_URL}/api/adoptions`,
         {
           method: "POST",
           headers: {

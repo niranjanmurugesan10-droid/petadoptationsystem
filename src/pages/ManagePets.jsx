@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function ManagePets() {
   const [pets, setPets] = useState([]);
   const [requests, setRequests] = useState([]);
@@ -37,7 +39,7 @@ function getWhatsAppNumber(phone) {
       // -------------------------------
 
       const petsResponse = await fetch(
-        "http://localhost:5000/api/pets/mine",
+        `${API_URL}/api/pets/mine`,
         {
           method: "GET",
           headers: {
@@ -59,7 +61,7 @@ function getWhatsAppNumber(phone) {
       // -------------------------------
 
       const requestsResponse = await fetch(
-        "http://localhost:5000/api/adoptions/received",
+        `${API_URL}/api/adoptions/received`,
         {
           method: "GET",
           headers: {
@@ -116,7 +118,7 @@ function getWhatsAppNumber(phone) {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/pets/${petId}`,
+        `${API_URL}/api/pets/${petId}`,
         {
           method: "DELETE",
           headers: {
@@ -175,7 +177,7 @@ function getWhatsAppNumber(phone) {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/adoptions/${requestId}/status`,
+        `${API_URL}/api/adoptions/${requestId}/status`,
         {
           method: "PUT",
 
