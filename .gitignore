@@ -5,6 +5,9 @@ node_modules/
 dist/
 build/
 
+# Backend is maintained in its own repository
+/server/
+
 # Environment variables
 .env
 .env.*
